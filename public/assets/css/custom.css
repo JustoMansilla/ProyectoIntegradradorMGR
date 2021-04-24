@@ -1,0 +1,55 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 25px 25px;
+    margin: 3%;
+  }
+  
+  .Header { grid-area: 1 / 1 / 2 / 4;
+            background-color: violet;
+            text-align: center;
+            color: black;
+            padding: 2%;
+  }
+
+  .Footer { grid-area: 1 / 1 / 2 / 4;
+    background-color: violet;
+    text-align: center;
+    color: black;
+    padding: 2%;
+}
+      
+  span{
+    font-style: italic;
+    color: white;
+  }
+
+  h4{
+      padding: 2%;
+      color: blue;
+  }
+
+
+
+  p{
+    padding: 2%;
+    color: black;
+    letter-spacing: 1px;
+  }
+
+  img{
+      margin-top: 5%;
+      border-radius: 50%;
+  }
+
+  .Main-DIV { grid-area: 2 / 1 / 4 / 4; }
+  
+  .Personaje-1 { grid-area: 2 / 1 / 4 / 2;
+                  background-color: #f9f9f9;
+                  border-radius: 5%;
+                  text-align: center;
+                    
+                }
+  
+  
