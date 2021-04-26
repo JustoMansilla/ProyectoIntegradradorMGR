@@ -35,7 +35,7 @@ export default class App extends Component {
         })
         .catch((e)=> console.log(e))
       }else{
-        alert("No te pases de vivo, menos de 10")
+        alert("No te pases de vivo, menos de 10 y por lo menos 1.")
       }  
     }
 
@@ -50,33 +50,44 @@ export default class App extends Component {
             </div>
           </header>  
 
-<div className="Agregartarjeta"> 
+      <div className="Agregartarjeta"> 
+        <div>
+          Cuantos usuarios quieres añadir?
+        </div>  
+          <input type="number" className="cantidadTarjetas"  placeholder="Cantidad de usuarios a añadir"/>
+            <button className="botonAgregar" onClick={() => this.agregarTarjetas(document.querySelector('.cantidadTarjetas').value)}>
+              Añadir
+            </button>
+      </div>
 
-      <input type="number" className="cantidadTarjetas"  placeholder="Cantidad de usuarios"/>
-      <button className="botonAgregar" onClick={() => this.agregarTarjetas(document.querySelector('.cantidadTarjetas').value)}>
-      Añadir
-     </button>
-
-</div>
-        
+      <div className="Agregartarjeta"> 
+        <div>
+          Filtrar por key word
+        </div>  
+          <input type="number" className="cantidadTarjetas"  placeholder="Palabra/numero"/>
+            {/* <button className="botonAgregar" onClick={() => this.agregarTarjetas(document.querySelector('.cantidadTarjetas').value)}>
+              Filtrar
+            </button> */}
+      </div>
+            
        
 
-  <div className="grid-container">
-          {this.state.arrayTarjetas.map((item) => {
-            return <Tarjetas 
-              key = {item.id} 
-              elemento = {item} 
-              // onDelete = {this.borrarTarjeta.bind(this)}
-            /> })
-          }
-</div>
+      <div className="grid-container">
+              {this.state.arrayTarjetas.map((item) => {
+                return <Tarjetas 
+                  key = {item.id} 
+                  elemento = {item} 
+                  // onDelete = {this.borrarTarjeta.bind(this)}
+                /> })
+              }
+      </div>
  
 
 
 
-<footer className="Footer">
-          <Footer />
-</footer>
+    <footer className="Footer">
+              <Footer />
+    </footer>
 
 
     </div>

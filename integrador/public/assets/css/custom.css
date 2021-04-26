@@ -27,6 +27,25 @@
     position: sticky;
 }
 
+.botonAgregar{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5%;
+  margin: 1%;
+}
+
+.Agregartarjeta{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-stretch: condensed;
+  padding: 0.5%;
+  margin: 2%;
+}
+
+.cantidadTarjetas{
+  padding: 0.5%;
+  margin: 1%;
+}
+
 h1{
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -91,3 +110,7 @@ h1{
                   margin: 3%;  
                   box-shadow: 10px 5px 5px rgb(39, 38, 38);
                 }
+
+
+
+                
