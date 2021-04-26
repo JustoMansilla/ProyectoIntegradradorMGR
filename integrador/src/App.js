@@ -25,6 +25,21 @@ export default class App extends Component {
       .catch((e)=> console.log(e))
     }
 
+    agregarTarjetas(cantidad){
+      if ((cantidad <= 10 && cantidad > 0)) {
+        fetch("https://randomuser.me/api/?results=" + cantidad)
+        .then(Respuesta => Respuesta.json())
+        .then((resultado)=>{
+        this.setState({
+          arrayTarjetas: this.state.arrayTarjetas.concat(resultado.results)});
+        })
+        .catch((e)=> console.log(e))
+      }else{
+        alert("No te pases de vivo, menos de 10")
+      }  
+    }
+
+
 
   render() {
     return (
@@ -35,10 +50,18 @@ export default class App extends Component {
             </div>
           </header>  
 
+<div className="Agregartarjeta"> 
 
+      <input type="number" className="cantidadTarjetas"  placeholder="Cantidad de usuarios"/>
+      <button className="botonAgregar" onClick={() => this.agregarTarjetas(document.querySelector('.cantidadTarjetas').value)}>
+      Añadir
+     </button>
+
+</div>
+        
        
 
-        <div className="grid-container">
+  <div className="grid-container">
           {this.state.arrayTarjetas.map((item) => {
             return <Tarjetas 
               key = {item.id} 
@@ -46,14 +69,14 @@ export default class App extends Component {
               // onDelete = {this.borrarTarjeta.bind(this)}
             /> })
           }
-        </div>
+</div>
  
 
 
 
-        <footer className="Footer">
+<footer className="Footer">
           <Footer />
-        </footer>
+</footer>
 
 
     </div>
