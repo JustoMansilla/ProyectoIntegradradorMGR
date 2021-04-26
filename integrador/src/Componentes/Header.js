@@ -4,7 +4,7 @@ class Header extends Component {
     render () {
         return(
             <h1>
-            Tarjeta de personas <span>Characters</span> 
+            Tarjeta de personas: <span>Characters</span> 
             </h1>
         );
     };

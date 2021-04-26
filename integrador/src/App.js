@@ -38,7 +38,7 @@ export default class App extends Component {
 
        
 
-        <div>
+        <div className="grid-container">
           {this.state.arrayTarjetas.map((item) => {
             return <Tarjetas 
               key = {item.id} 
