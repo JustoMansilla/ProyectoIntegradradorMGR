@@ -20,7 +20,16 @@ class Tarjetas extends Component {
         })
     }
 
-   
+    colorLeave(){
+        if(this.state.color === "#lightgray")
+        this.setState({
+            color: "#lightgray",
+        })
+        else
+        this.setState({
+            color: "#f9f9f9",
+        })
+    }
 
     render () {
         return(
@@ -28,7 +37,7 @@ class Tarjetas extends Component {
         <div className="Personaje-1"
         style = {{backgroundColor: this.state.color}}
         onMouseEnter={this.colorEnter.bind(this)}
-        >
+        onMouseLeave={this.colorLeave.bind(this)}>
 
             <div className="img-wrapper">    
                 <img className="inner-img" src={this.props.elemento.picture.large} alt="" />
