@@ -33,6 +33,12 @@
   margin: 1%;
 }
 
+.botonResetear{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5%;
+  margin: 1%;
+}
+
 .Agregartarjeta{
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -100,8 +106,6 @@ h1{
   }
     
  
-
-  /* .Main-DIV { grid-area: 2 / 1 / 4 / 4; } */
   
   .Personaje-1 { 
                   background-color: #f9f9f9;

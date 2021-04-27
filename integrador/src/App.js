@@ -5,21 +5,19 @@ import React, {Component} from "react";
 
 export default class App extends Component { 
 
-    constructor(){
-      super();
+    constructor(props){
+      super(props);
       this.state = {
         arrayTarjetas: [],
-        search: " ",
+        resetear: []
       }
     };
 
     componentDidMount(){
       fetch("https://randomuser.me/api/?results=21")
       .then(r => r.json())
-      .then((resultado)=>{
-        console.log(resultado)
-        this.setState({
-          arrayTarjetas: resultado.results});
+      .then(resultado => {
+        this.setState({arrayTarjetas: resultado.results, resetear: resultado.results});
         
       })
       .catch((e)=> console.log(e))
@@ -39,11 +37,16 @@ export default class App extends Component {
       }  
     }
 
+    resetear(){
+      this.setState({arrayTarjetas: this.state.resetear})
+    }
+
 
 
   render() {
     return (
     <div className="App">
+
           <header className="App-header">
             <div className="Header">
               <Header />
@@ -54,23 +57,12 @@ export default class App extends Component {
         <div>
           Cuantos usuarios quieres añadir?
         </div>  
-          <input type="number" className="cantidadTarjetas"  placeholder="Cantidad de usuarios a añadir"/>
-            <button className="botonAgregar" onClick={() => this.agregarTarjetas(document.querySelector('.cantidadTarjetas').value)}>
+        <input type="number" className="cantidadTarjetas"  placeholder="Cantidad de usuarios a añadir"/>
+          <button className="botonAgregar" onClick={() => this.agregarTarjetas(document.querySelector('.cantidadTarjetas').value)}>
               Añadir
-            </button>
+          </button>
       </div>
-
-      <div className="Agregartarjeta"> 
-        <div>
-          Filtrar por key word
-        </div>  
-          <input type="number" className="cantidadTarjetas"  placeholder="Palabra/numero"/>
-            {/* <button className="botonAgregar" onClick={() => this.agregarTarjetas(document.querySelector('.cantidadTarjetas').value)}>
-              Filtrar
-            </button> */}
-      </div>
-            
-       
+  
 
       <div className="grid-container">
               {this.state.arrayTarjetas.map((item) => {
@@ -82,6 +74,10 @@ export default class App extends Component {
               }
       </div>
  
+      
+      <div className="botonResetear" style={{textAlign: "center"}}>
+            <button onClick={this.resetear.bind(this)}>Resetear</button>
+      </div>
 
 
 

@@ -19,7 +19,7 @@ class Tarjetas extends Component {
             </p>
 
             <p>
-                Fecha de nacimiento: {this.props.elemento.dob.date} ({this.props.elemento.dob.age})
+                Fecha de nacimiento: {this.props.elemento.dob.date.substr(0,10)} ({this.props.elemento.dob.age})
             </p>
            
 
