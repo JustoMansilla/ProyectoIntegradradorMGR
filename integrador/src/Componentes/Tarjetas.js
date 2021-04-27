@@ -4,7 +4,7 @@ class Tarjetas extends Component {
     render () {
         return(
        
-            <div className="Personaje-1">
+        <div className="Personaje-1">
 
             <div className="img-wrapper">    
                 <img className="inner-img" src={this.props.elemento.picture.large} alt="" />
@@ -25,7 +25,7 @@ class Tarjetas extends Component {
 
            
             
-            </div>
+        </div>
     
        
     );

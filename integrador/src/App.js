@@ -5,6 +5,8 @@ import React, {Component} from "react";
 
 export default class App extends Component { 
 
+    //Constructor, contiene el arrayTarjetas donde se van pegando todas las traidas por la API y resetear, que la usamos para
+    // devolver las tarjetas originales
     constructor(props){
       super(props);
       this.state = {
@@ -13,6 +15,7 @@ export default class App extends Component {
       }
     };
 
+    //Fetch que trae a las 20 tarjetas originales de la API
     componentDidMount(){
       fetch("https://randomuser.me/api/?results=21")
       .then(r => r.json())
@@ -23,6 +26,7 @@ export default class App extends Component {
       .catch((e)=> console.log(e))
     }
 
+    //Funcion agregar tarjetas (un if entre 0 y 10 tarjetas)
     agregarTarjetas(cantidad){
       if ((cantidad <= 10 && cantidad > 0)) {
         fetch("https://randomuser.me/api/?results=" + cantidad)
@@ -37,10 +41,12 @@ export default class App extends Component {
       }  
     }
 
+    //Funcion resetear (muestra las tarjetas originales en caso de haber agregado +)
     resetear(){
       this.setState({arrayTarjetas: this.state.resetear})
     }
 
+    // Funcion para filtrar (un if que contiene otro if con las parametros a buscar)
     filtrarTarjetas(){
       let filterData = document.querySelector(".filterData").value
       let filtrarPor = document.querySelector(".filterBy").value
@@ -84,16 +90,19 @@ export default class App extends Component {
       }}
 
 
+  // Render, lo que vamos a ver el front-end
   render() {
     return (
     <div className="App">
 
+          {/* Header */}
           <header className="App-header">
             <div className="Header">
               <Header />
             </div>
           </header>  
 
+      {/* Parametros para agregar tarjetas */}
       <div className="Agregartarjeta"> 
         <div>
         <h5>Cuantos usuarios quieres añadir?</h5>
@@ -104,6 +113,7 @@ export default class App extends Component {
           </button>
       </div>
 
+      {/* Parametros de filtrado */}
       <div className="seccionFiltro">
         <h5>Filtrar por:</h5>
           <select style={{padding: "0.5%"}} className="filterBy" name="filterBy">
@@ -114,7 +124,7 @@ export default class App extends Component {
         <input style={{margin: "1%", padding: "0.5%"}} onInput={this.filtrarTarjetas.bind(this)} className="filterData" name="filterData" type= "text"/>
      </div>
   
-
+      {/* MAP, loop para mostrar las tarjetas */}
       <div className="grid-container">
               {this.state.arrayTarjetas.map((item) => {
                 return <Tarjetas 
@@ -125,13 +135,13 @@ export default class App extends Component {
               }
       </div>
  
-      
+      {/* Boton resetear */}
       <div className="botonResetear" style={{textAlign: "center"}}>
-            <button onClick={this.resetear.bind(this)}>Resetear</button>
+            <button onClick={this.resetear.bind(this)}>Ver tarjetas originales</button>
       </div>
 
 
-
+    {/* Footer */}
     <footer className="Footer">
               <Footer />
     </footer>
