@@ -40,6 +40,15 @@ export default class App extends Component {
         alert("No te pases de vivo, menos de 10 y por lo menos 1.")
       }  
     }
+    borrarTarjeta(idTarjeta){
+      let borrar = this.state.arrayTarjetas.filter((tarjeta) => {
+        return tarjeta.id !== idTarjeta
+      })
+      this.setState({
+        arrayTarjetas: borrar
+      })
+
+    };
 
     //Funcion resetear (muestra las tarjetas originales en caso de haber agregado +)
     resetear(){
@@ -130,8 +139,11 @@ export default class App extends Component {
                 return <Tarjetas 
                   key = {item.id} 
                   elemento = {item} 
-                  // onDelete = {this.borrarTarjeta.bind(this)}
-                /> })
+                  color="white"
+                  displayDetalle="none"
+                  onDelete = {this.borrarTarjeta.bind(this)}/>
+
+                   })
               }
       </div>
  

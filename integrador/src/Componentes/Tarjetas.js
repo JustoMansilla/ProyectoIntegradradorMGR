@@ -5,7 +5,8 @@ class Tarjetas extends Component {
     constructor(props){
         super(props);
         this.state = {
-            color1: props.color,              
+            color1: props.color,     
+            displayDetalles: props.displayDetalle         
         }
     }
 
@@ -30,6 +31,17 @@ class Tarjetas extends Component {
             color: "#f9f9f9",
         })
     }
+    verDetalles(){
+        if(this.state.displayDetalles === "none")
+            this.setState({ 
+                displayDetalles: "inline" 
+            })
+        else
+            this.setState({
+                displayDetalles: "none"
+            })
+    }  
+    
 
     render () {
         return(
@@ -54,9 +66,19 @@ class Tarjetas extends Component {
             <p>
                 Fecha de nacimiento: {this.props.elemento.dob.date.substr(0,10)} ({this.props.elemento.dob.age})
             </p>
+            <div className="detalles" style={{display:this.state.displayDetalles}}>
+                <h4>{this.props.elemento.location.street.number} {this.props.elemento.location.street.name}</h4>
+                <h4>{this.props.elemento.location.city} - {this.props.elemento.location.state}</h4>
+                <h4>{this.props.elemento.location.country}</h4>
+                <h4>{this.props.elemento.location.postcode}</h4>
+                <h4>{this.props.elemento.registered.date.substr(0,10)}</h4>
+            </div>
            
+            <div class="botones">
+                 <button type="button" className="boton-borrar" onClick = {this.props.onDelete.bind(this, this.props.elemento.id)}> X </button>
+            <button onClick={this.verDetalles.bind(this)}>Detalles</button>
 
-           
+            </div>
             
         </div>
     
