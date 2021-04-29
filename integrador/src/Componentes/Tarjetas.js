@@ -75,8 +75,8 @@ class Tarjetas extends Component {
             </div>
            
             <div class="botones">
-                 <button type="button" className="boton-borrar" onClick = {this.props.onDelete.bind(this, this.props.elemento.id)}> X </button>
-            <button onClick={this.verDetalles.bind(this)}>Detalles</button>
+                 <button type="button" className="boton-borrar" onClick = {this.props.onDelete.bind(this, this.props.elemento.id)}>Borrar Tarjeta </button>
+            <button onClick={this.verDetalles.bind(this)}>Ver detalles</button>
 
             </div>
             

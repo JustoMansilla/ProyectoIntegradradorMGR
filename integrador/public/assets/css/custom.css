@@ -123,5 +123,11 @@ h1{
                 }
 
 
-
-                
+.botones button{
+margin: 10px;
+background-color: black;
+color: white;
+border-radius: 25%;
+border-color:blue ;
+border-width: 3px;
+}
