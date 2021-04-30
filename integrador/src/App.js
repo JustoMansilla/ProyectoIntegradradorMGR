@@ -55,48 +55,19 @@ export default class App extends Component {
       this.setState({arrayTarjetas: this.state.resetear})
     }
 
-    // Funcion para filtrar (un if que contiene otro if con las parametros a buscar)
-    filtrarTarjetas(){
-      let filterData = document.querySelector(".filterData").value
-      let filtrarPor = document.querySelector(".filterBy").value
-      console.log(filterData)
-      console.log(filtrarPor)
-     
-      if(filterData != ""){
-
-          if (filtrarPor === "años"){
-              let resultado = this.state.arrayTarjetas.filter( (item)=> {
-                  let años = item.dob.age
-                  let años2 = años.toString()
-                   return años2.includes(filterData);
-              })
-              this.setState({arrayTarjetas: resultado});
-              console.log(this.state.arrayTarjetas)
-          }
-          else if(filtrarPor === "nombre"){
-              let filterDataMayus = filterData.toUpperCase()
-              
-
-              let resultado = this.state.arrayTarjetas.filter( (item)=> {
-                  let itemDataMayus = item.name.first.toUpperCase()
-                  return itemDataMayus.includes(filterDataMayus);
-              })
-              this.setState({arrayTarjetas: resultado});
-          }
-           else if(filtrarPor == "nacionalidad"){
-              let filterDataMayus = filterData.toUpperCase()            
-              let resultado = this.state.arrayTarjetas.filter( (item)=> {
-                  let itemDataMayus = item.location.country.toUpperCase()
-                  return itemDataMayus.includes(filterDataMayus);
-              })
-              this.setState({arrayTarjetas: resultado});
-           }
+    
+    // Funcion filtrar (el || es un "or" que agarra first name, last name, age)
+      filtrarTarjetas(persona) {
+        let parametroFiltro = this.state.arrayTarjetas.filter ((usuario) => {
+          return usuario.name.first.toLowerCase() === persona.toLowerCase() ||
+          usuario.name.last.toLowerCase() === persona.toLowerCase() ||
+          parseInt(usuario.dob.age) === parseInt(persona)
+        })
+        this.setState ({
+          arrayTarjetas: parametroFiltro
+        })
+        console.log(parametroFiltro);
       }
-      else{
-          this.setState({
-              arrayTarjetas: this.state.resetear
-          })
-      }}
 
 
   // Render, lo que vamos a ver el front-end
@@ -123,16 +94,19 @@ export default class App extends Component {
       </div>
 
       {/* Parametros de filtrado */}
-      <div className="seccionFiltro">
-        <h5>Filtrar por:</h5>
-          <select style={{padding: "0.5%"}} className="filterBy" name="filterBy">
-            <option value="años">Edad</option>
-            <option value="nombre">Nombre</option>
-            <option value="nacionalidad">Nacionalidad</option>
-          </select>
-        <input style={{margin: "1%", padding: "0.5%"}} onInput={this.filtrarTarjetas.bind(this)} className="filterData" name="filterData" type= "text"/>
-     </div>
-  
+      <div className = "parametrosFiltro"> 
+                    <h5>Filtrar (Nombre, apellido o edad)</h5> 
+        <input type="text" className="persona" placeholder="Escribir..." style={{padding: "0.5%"}} onChange = {(evento) => this.setState({search: evento.target.value})}/> 
+        <button onClick = {() => this.filtrarTarjetas(document.querySelector('.persona').value)}> 
+                        Buscar 
+        </button> 
+      </div>
+
+      {/* Boton resetear */}
+      <div className="botonResetear" style={{textAlign: "center"}}>
+            <button onClick={this.resetear.bind(this)}>Ver tarjetas originales</button>
+      </div>
+
       {/* MAP, loop para mostrar las tarjetas */}
       <div className="grid-container">
               {this.state.arrayTarjetas.map((item) => {
@@ -147,11 +121,6 @@ export default class App extends Component {
               }
       </div>
  
-      {/* Boton resetear */}
-      <div className="botonResetear" style={{textAlign: "center"}}>
-            <button onClick={this.resetear.bind(this)}>Ver tarjetas originales</button>
-      </div>
-
 
     {/* Footer */}
     <footer className="Footer">
