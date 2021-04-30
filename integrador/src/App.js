@@ -16,6 +16,7 @@ export default class App extends Component {
     };
 
     //Fetch que trae a las 20 tarjetas originales de la API
+    //componentDidMount se hace antes del primer render una vez que se monta el componente.
     componentDidMount(){
       fetch("https://randomuser.me/api/?results=21")
       .then(r => r.json())
@@ -27,6 +28,7 @@ export default class App extends Component {
     }
 
     //Funcion agregar tarjetas (un if entre 0 y 10 tarjetas)
+    //setState se usa para pasarr un objeto con la clave valor de lo que quiero modificar
     agregarTarjetas(cantidad){
       if ((cantidad <= 10 && cantidad > 0)) {
         fetch("https://randomuser.me/api/?results=" + cantidad)

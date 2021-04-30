@@ -42,7 +42,7 @@ class Tarjetas extends Component {
             })
     }  
     
-
+//props pasa info de componente padre a uno hijo.
     render () {
         return(
        
@@ -55,7 +55,7 @@ class Tarjetas extends Component {
                 <img className="inner-img" src={this.props.elemento.picture.large} alt="" />
             </div>
 
-            <h4>
+            <h4>  
                 Nombre: {this.props.elemento.name.first} {this.props.elemento.name.last} 
             </h4> 
 
